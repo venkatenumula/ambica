@@ -1,0 +1,93 @@
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin login page</title>
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+ <style type="text/css">
+ 	.button:hover span {
+  padding-right: 25px;
+}
+
+ </style>
+
+</head>
+<body>
+<script>
+
+function login()
+{
+ var un= document.getElementById("uname").value;
+ var pw= document.getElementById("pwd").value;
+ var div = document.getElementById("faildiv");
+ 
+ var form = document.getElementById("loginForm");
+ function handleForm(event) { event.preventDefault(); } 
+ form.addEventListener('submit', handleForm);
+ 
+console.log ("running JS "+un);
+ if( un == null )
+ 	{ 	
+ 		alert("please enter username"); 
+     return false;
+}
+else if( pw == null ){
+ 	alert("please enter password");
+ 	return false;
+}
+else
+{
+	var xhr = new XMLHttpRequest();
+	 
+    // Making our connection  
+    var url = '/userAuth?id='+un+'&pwd='+pw;
+    console.log('calling :'+url );
+    xhr.open("GET", url, true);
+
+    // function execute after request is successful 
+    xhr.onreadystatechange = function () {
+    	console.log('response from auth call '+this.status+' msg:'+this.responseText );
+        if (this.readyState == 4 && this.status == 200 ) {
+            console.log('Authentication success :' );            
+            window.location='adminHome'; 
+            return false;
+        }
+        else if(this.readyState == 4 && this.status != 200 )
+        {
+        	console.log('Authentication not success :'+this.responseText );
+        	//alert('Authentication failure..');
+        	div.innerHTML = "Login Failure. "+this.responseText ;   
+        	document.getElementById("pwd").value="";
+        	return false;
+        }
+    }
+    
+ // Sending our request 
+    xhr.send();   	
+}
+}
+
+ </script> </br> </br>
+<h4  class="display-4 text-center" > LOGIN PAGE </h4>
+<center>  </br> </br>
+	<div  class="form-group">
+		<form id="loginForm" onsubmit="return login()"  >
+			
+			<label> USER NAME </label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+			 <input type="text" id="uname" required /> </br> </br>
+			<label> PASSWORD </label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  
+			<input type="password" id="pwd" required />   </br> </br>
+
+			<input type="button" class="btn btn-info btn-sm" value='LOGIN' onClick="return login()">  </input>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <button type="reset" class="btn btn-danger" > CLEAR </button> 
+           </br> </br> 
+           <div style="color:red;" id='faildiv'> <p> </p>  </div>
+		</form>
+
+	</div>
+
+</center>
+
+</body>
+</html>

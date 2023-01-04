@@ -1,0 +1,207 @@
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Create Event form</title>
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+ <style type="text/css">
+ 
+ .button:hover span {
+  padding-right: 25px;
+}
+
+img {
+    width: 300px;
+    height: 400px; 
+    object-fit: contain;
+}
+
+.center {
+  margin: auto;
+  width: 55%;
+  border: 1px solid #83D5EE;
+  padding: 10px;
+   overflow: hidden;
+}
+
+.main {
+  margin: auto;
+  width: 85%;
+  height : auto;
+  padding: 30px;
+}
+
+img {
+    width: 180px;
+    height: 220px; 
+    object-fit: contain;
+    float:left;
+}
+.red {
+color: red;
+}
+
+ </style>
+
+</head>
+<body>
+<div th:if="${#session.getAttribute('sessionId') == null}">
+   <div> <h5 class="display-4 text-center text-danger"> Invalid session. please login here 
+   <a href="/login"> login </a> </h5>
+   </div>
+</div>
+<!-- ELSE -->
+<div th:unless="${#session.getAttribute('sessionId') ==null}">
+
+ <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #17b85d;">
+ <!-- <div class="collapse navbar-collapse" id="navbarText"> -->
+ <div class="container-fluid">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+  <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+  <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="#" style="font-size:30px ; color:lightyellow ">APG</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="adminHome">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/createEvent">Create event <span class="sr-only">(current)</span> </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/modifyEvent">Modify event</a>
+      </li>      
+    </ul>
+    
+    &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp 
+    
+    <a class = "material-icons" style="color:red" href="logout" alt="Logout" > logout  
+   <span th:text="${#session.getAttribute('name') }" class="btn btn-outline-warning"> &nbsp &nbsp
+    
+    </a> 
+  </span>
+    </div>
+</nav>
+</br>
+</br>
+</br>
+<center>
+
+<form class="main" id="cform" action="createEvent" method="POST" enctype="multipart/form-data">
+
+  <!-- 2 column grid layout with text inputs for the first and last names -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+      <label class="form-label" for="fname">First name</label>
+        <input type="text" id="fname" name="fname" class="form-control" required />
+        
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline"> 
+      <label class="form-label" for="sname">Second name</label>
+        <input type="text" id="sname" name="sname" class="form-control" required />
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+       <label class="form-label" for="venue">Event Venue</label>
+        <input type="text" name="venue" class="form-control" required />
+       
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+      <label class="form-label" for="eventdate">Event Date</label>
+        <input type="text" name="eventdate" class="form-control" required />
+        
+      </div>
+    </div>
+    
+     <div class="col">
+      <div class="form-outline">
+      <label class="form-label" for="recdate">Reception Date</label>
+        <input type="text" name="recdate" class="form-control" />
+        
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="row mb-4">
+    <div class="col">
+      <div class="">
+      <label class="form-label" for="tcode">Teaser code</label>
+        <input type="text" name="tcode" class="form-control" />
+        
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+      <label class="form-label" for="wcode">Wedding code</label>
+        <input type="text" name="wcode" class="form-control" />
+        
+      </div>
+    </div>
+    
+     <div class="col">
+      <div class="form-outline">
+      <label class="form-label" for="rcode">Reception code</label>
+        <input type="text" name="rcode" class="form-control" />
+        
+      </div>
+    </div>
+    
+  </div>
+  
+   <div class="row mb-4">
+    <div class="col">
+      <div class="form-outline">
+       <label class="form-label" for="ipic">Invitation Picture</label>
+        <input type="file" name="ipic" class="form-control" multiple accept="image/*" />
+       
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-outline">
+      <label class="form-label" for="cpic">Couple Picture</label>
+        <input type="file" name="cpic" class="form-control" multiple accept="image/*" />
+        
+      </div>
+    </div>
+  </div>
+
+ <div class="row mb-4">
+    <div class="col">
+       <!-- Submit button -->
+  <button type="submit" class="btn btn-primary mb-3">Submit</button>
+    </div>
+    <div class="col">
+        <button type="reset" class="btn btn-danger mb-4">Clear</button>
+    </div>
+  </div>
+  
+ 
+
+</form>
+
+</center>
+
+  </div>
+
+</body>
+</html>

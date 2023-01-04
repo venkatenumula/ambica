@@ -1,0 +1,189 @@
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Page</title>
+<link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <style type="text/css">
+ 	.button:hover span {
+  padding-right: 25px;
+}
+
+img {
+    width: 300px;
+    height: 400px; 
+    object-fit: contain;
+}
+
+.center {
+  margin: auto;
+  width: 55%;
+  border: 1px solid #83D5EE;
+  padding: 10px;
+   overflow: hidden;
+}
+
+.main {
+  margin: auto;
+  width: 85%;
+  height : auto;
+  padding: 30px;
+}
+
+img {
+    width: 180px;
+    height: 220px; 
+    object-fit: contain;
+    float:left;
+}
+.red {
+color: red;
+}
+
+input {
+    /* round the corners */
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;    
+}
+
+input:focus { 
+    outline:none;
+    border: 2px solid #ecb32c; 
+    /* create a BIG glow */
+    box-shadow: 0px 0px 14px #4195fc; 
+    -moz-box-shadow: 0px 0px 14px #4195fc;
+    -webkit-box-shadow: 0px 0px 14px #4195fc;  
+}​
+ </style>
+ 
+ <script>
+ function doSearch(id)
+ {
+ 
+ }
+ </script>
+
+</head>
+<body>
+
+<!-- ELSE -->
+<div>
+
+ <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #17b85d;">
+ <!-- <div class="collapse navbar-collapse" id="navbarText"> -->
+ <div class="container-fluid">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+  <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+  <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="#" style="font-size:30px ; color:lightyellow ">APG</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/adminHome">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="createEvent">Create event</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="javascript:document.getElementById('searchid').focus()">Modify event</a>
+      </li>      
+    </ul>
+    
+    <form class="form-inline" action="search?value=" onsubmit="location.href = this.action + this.searchid.value; return false;" >
+    <input class="form-control" type="search" id="searchid" placeholder="Search with name or ID" aria-label="Search">
+    <button class="btn btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+  </form> 
+    &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp 
+    
+    <a class = "material-icons" style="color:red" href="logout" alt="Logout" > logout  
+   &nbsp &nbsp
+    
+    </a> 
+  </span>
+    </div>
+</nav>
+</br>
+</br>
+</br>
+<center>
+
+
+<div class="main" >
+
+	
+        
+<table class="table table-striped table-bordered" >
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Second Name</th>
+      <th scope="col">Wedding Date</th>
+	  <th scope="col">Reception Date</th>
+	  <th scope="col">Venue</th>
+	  <th scope="col">Teaser Video Code</th>
+	  <th scope="col">Wedding Video Code</th>
+	  <th scope="col">Reception Video Code</th>
+	  <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" >3</th>
+      <td>Vani Sri</td>
+	  <td>Prasad</td>
+	  <td>17-Feb-2015</td>
+	  <td>24-Feb-2023 8:19 PM</td>
+	  <td> MettaGudem, Narsapuram</td>
+	  <td>83ZqcKy-HFw</td>
+	  <td>ccbp0_ZqMBY</td>
+	  <td>gH_RYRwVrVM</td>
+	   <td ><button id="3" class="btn btn-info" onclick="location.href = 'watchWedding?id='+this.id ; return false;"> View page</button> </td> 
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <th scope="row" >2</th>
+      <td>Krishna Kumari</td>
+	  <td>Hanumanth</td>
+	  <td>12-Dec-2014</td>
+	  <td>24-Feb-2023 8:19 PM</td>
+	  <td> MettaGudem, Narsapuram</td>
+	  <td>83ZqcKy-HFw</td>
+	  <td>Cn-o7RzUPpU</td>
+	  <td>gH_RYRwVrVM</td>
+	   <td ><button id="2" class="btn btn-info" onclick="location.href = 'watchWedding?id='+this.id ; return false;"> View page</button> </td> 
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <th scope="row" >1</th>
+      <td>Venkat</td>
+	  <td>Bindu</td>
+	  <td>24-Feb-2023 8:19 PM</td>
+	  <td>25-Feb-2023 </td>
+	  <td>SS conventions, Narsapuram</td>
+	  <td>83ZqcKy-HFw</td>
+	  <td>EJ4KGZynTpE</td>
+	  <td>gH_RYRwVrVM</td>
+	   <td ><button id="1" class="btn btn-info" onclick="location.href = 'watchWedding?id='+this.id ; return false;"> View page</button> </td> 
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</center>
+
+  </div>
+
+</body>
+</html>
+

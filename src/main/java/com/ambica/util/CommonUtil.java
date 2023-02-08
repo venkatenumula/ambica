@@ -2,7 +2,9 @@ package com.ambica.util;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +21,8 @@ public class CommonUtil {
 	public WeddingDetails generateWedding(HttpServletRequest req) throws IOException, ServletException
 	{		
 		WeddingDetails newWedding=new WeddingDetails();		
-		newWedding.firstName=req.getParameter("fname") ;
-		newWedding.secondName=req.getParameter("sname") ;
+		newWedding.firstName=req.getParameter("fname").replaceAll(" ", "") ;
+		newWedding.secondName=req.getParameter("sname") .replaceAll(" ", "");
 		newWedding.eventDate=req.getParameter("eventdate") ;
 		newWedding.eventVenue=req.getParameter("venue") ;
 		newWedding.recDate=req.getParameter("recdate") ;
@@ -28,9 +30,13 @@ public class CommonUtil {
 		newWedding.teaserLink =req.getParameter("tcode") ;
 		newWedding.wedLink =req.getParameter("wcode") ;
 		newWedding.recpLink =req.getParameter("rcode") ;
-		
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		String date=sdf.format(new Date());
+		newWedding.ctime=new Date();
+		newWedding.mtime=new Date();
 		InputStream pic=null;
 		byte[] sourceBytes ;
+		
 		try {
 	    
 		Part file1=req.getPart("ipic");

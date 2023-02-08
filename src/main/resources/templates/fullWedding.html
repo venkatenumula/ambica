@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title th:text="${item.firstName + ' weds ' + item.secondName } + '| APG ' " > </title>
+<title th:text="${item.firstName + ' weds ' + item.secondName } + '| WedLive ' " > </title>
 <link rel="stylesheet"
  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -17,7 +17,7 @@
    
 .center {
   margin: auto;
-  width: 55%;
+  width: 35%;
   padding: 10px;
   overflow: hidden;
 }
@@ -35,29 +35,58 @@
     width: auto;
     height: auto; 
     object-fit: contain;
-    max-height : 500px;
+    max-height : 800px;
     max-width : 800px;
 }
+
+.cimg {
+    width: 250px;
+    height: 320px; 
+    object-fit: contain;
+    float:left;
+}
+
+.glow {
+  font-size: 80px;
+  color: red;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+  font-family: 'Brush Script MT', cursive;
+}
+
+/* @-webkit-keyframes glow { */
+/*   from { */
+/*     text-shadow: 0 0 10px  #dcf9ba , 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073; */
+/*   } */
+  
+/*   to { */
+/*     text-shadow: 0 0 20px  #dcf9ba , 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6; */
+/*   } */
+/*  } */
 body
 {
-background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.8)), url("bodybg1.jpg");
-font-family: 'Brush Script MT', cursive;
+background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.8)), url("https://img.freepik.com/free-vector/vintage-ornamental-flowers-background_52683-28040.jpg?w=1380&t=st=1675160741~exp=1675161341~hmac=59e4a5ffc436630917c5ff197c71b2047b563ba8072a3f0eca13677cc3a8e3c7");
+
 }
   
 .heading {
   margin: auto;
-  width: 20%;
+  width: 50%;
   padding: 3px;
   overflow: hidden;
-  border-bottom: 1px solid brown;
+  font-weight: bold;
+  color: teal;
+ border-bottom: 1px solid brown;
 }
 
 .heading1 {
   margin: auto;
-  width: 25%;
   padding: 5px;
   overflow: hidden;
-  border-bottom: 2px solid olive;
+  font-weight: bold;
+  color : orangered;
+  font-size: 45px;
+/*   border-bottom: 2px solid olive; */
 }
 
 .ifr
@@ -72,47 +101,50 @@ height:560px ;
 
 <body>
 
-<div class="m-4" style="font-family: 'Calibri ;">
-    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #17a2b8;">
-        <div class="container-fluid">
-            <a href="/" class="navbar-brand">
-                <img src="logo3.jpg" height="48" alt="APG">
-            </a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav">
-                    <a href="/" class="nav-item nav-link active">Home</a>
-                    <a href="#aboutus" class="nav-item nav-link">About Us</a>
-                    <a href="#aboutus" class="nav-item nav-link">Contact Us</a>
+<!-- <div class="m-4" style="font-family: 'Calibri ;"> -->
+<!--     <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #17a2b8;"> -->
+<!--         <div class="container-fluid"> -->
+<!--             <a href="#" class="navbar-brand"> -->
+<!--                 <img src="logo3.jpg" height="48" alt="APG"> -->
+<!--             </a> -->
+<!--             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"> -->
+<!--                 <span class="navbar-toggler-icon"></span> -->
+<!--             </button> -->
+<!--             <div class="collapse navbar-collapse" id="navbarCollapse"> -->
+<!--                 <div class="navbar-nav"> -->
+<!--                     <a href="#" class="nav-item nav-link active">Home</a> -->
+<!--                     <a href="#aboutus" class="nav-item nav-link">About Us</a> -->
+<!--                     <a href="#aboutus" class="nav-item nav-link">Contact Us</a> -->
                
-                </div>
+<!--                 </div> -->
                 
-            </div>
-        </div>
-    </nav>
-</div>
+<!--             </div> -->
+<!--         </div> -->
+<!--     </nav> -->
+<!-- </div> -->
 <center>
 
-<br/> <br/>
+<br/> <br/> <br/> <br/>
+<h2> WELCOME TO WEDDING LIVE OF </h2>
+<br/>
 
 <div>
 
-<h2 class='heading1' th:text="${item.firstName + ' weds ' + item.secondName }"> </h2> <br/>
+<h1 class='heading1' th:text="${item.firstName + ' weds ' + item.secondName }"> </h1> <br/>
 
 <!--  <img class="img" src="https://images.unsplash.com/photo-1597157639073-69284dc0fdaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80" /> -->
  <img class="img" th:src="'data:image/png;base64,' + ${item.wedPic}" />
  <div> &nbsp </div> </div>
 
- <div >
+ <div th:if="${item.invitePic != null and item.invitePic != '' }">
 <h3 class='heading'> Invitation card</h3> <br/>
 
 <img class="img" th:src="'data:image/png;base64,' + ${item.invitePic}" />
  </div>
  <div> &nbsp </div> 
- <div>
- <h3 class='heading'> Teaser Video</h3>  
+ 
+ <div th:if="${item.teaserLink != null and item.teaserLink != ''}">
+ <h3 class='heading'> Teaser/Invitation Video</h3>  
   <br/>
   <iframe class="ifr"
   th:src="'https://www.youtube.com/embed/' +${item.teaserLink}"
@@ -121,8 +153,15 @@ height:560px ;
   allowfullscreen></iframe>
  </div>
  
+  <div class="center">
+ <img class="cimg" src="https://img.freepik.com/premium-vector/beautiful-indian-couple-bride-groom-traditional-wedding-sari-dress-flay-style_70155-151.jpg?w=740" alt="Couple Picture" />
+ <div class="glow" style="white-space: pre-line" th:text="${wedMsg}">
+ 
+  </div>
+    </div> 
+        									            		   
   <div> &nbsp </div> 
- <div>
+ <div th:if="${item.wedLink != null and item.wedLink != '' }">
  <h3 class='heading' th:text=" 'Wedding Live :('+${item.eventDate + ')' }" > </h3>  
   <br/>
   <iframe class="ifr"
@@ -132,8 +171,11 @@ height:560px ;
   allowfullscreen></iframe>
  </div>
  
+ <br/>
+ 
+    
   <div> &nbsp </div> 
- <div>
+ <div th:if="${item.recpLink != null and item.recpLink != '' }">
  <h3 class='heading' th:text=" 'Reception Live :('+${item.recDate + ')' }" > </h3>  
   <br/>
   <iframe class="ifr"
@@ -146,9 +188,11 @@ height:560px ;
 </div> <br/>
 
 </br> </br> </br>
-<div> 
-  <embed id="aboutus" type="text/html" src="footer.html" width="100%" height="600px"> 
-</div>
+
+
+<!-- <div>  -->
+<!--   <embed id="aboutus" type="text/html" src="footer.html" width="100%" height="600px">  -->
+<!-- </div> -->
 
 </center>
 </body>

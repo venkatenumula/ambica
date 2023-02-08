@@ -1,6 +1,7 @@
 package com.ambica.entity;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -48,6 +49,11 @@ public class WeddingDetails {
 	@Column(name="recp_link")
 	public String recpLink;
 	
+	@Column(name="ctime")
+	public Date ctime; 
+	
+	@Column(name="mtime")
+	public Date mtime; 
 
 	public Long getWeddingId() {
 		return weddingId;
@@ -136,7 +142,16 @@ public class WeddingDetails {
 	public void setRecpLink(String recpLink) {
 		this.recpLink = recpLink;
 	}
-
+	
+	public long getPostedTime()
+	{
+		Date now=new Date();
+		if(this.ctime ==null)
+			return 0;
+		long days_diff=(now.getTime()-this.ctime.getTime()) /(1000 * 60 * 60 * 24)%365;
+		//System.out.println("" );
+		return days_diff;
+	}
 	
 	@Override
 	public String toString() {

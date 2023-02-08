@@ -12,34 +12,48 @@
 
 <style>
 img {
-    width: auto;
-    height: auto; 
-    object-fit: contain;
+ width:100%;
+  height:480px;
+}
+
+.carousel-inner > .item > img {
+  width:100%;
+  height:480px;
 }
 </style>
 
 <div class="container" style=" width="854"; height="480"">
-   <div id="myCarousel" class="carousel slide" data-ride="carousel" >
+   <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="1500" >
 
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+      <li data-target="#myCarousel" data-slide-to="4"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" style="width:100%; height: 400px;" >
       <div class="item active">
-        <img src="https://static.toiimg.com/thumb/resizemode-4,msid-73070557,width-1200,height-900/73070557.jpg" alt="Los Angeles" >
+        <img src="img1.jpg" alt="Los Angeles" >
       </div>
 
       <div class="item">
-        <img src="https://www.clubmahindra.com/blog/media/section_images/naturephot-ec32e94608f809e.webp" alt="Chicago" >
+        <img src="img2.jpg" alt="Chicago" >
       </div>
     
       <div class="item">
-        <img src="ny.jpg" alt="New york" >
+        <img src="img3.jpg" alt="New york" >
+      </div>
+      
+      <div class="item active">
+        <img src="img4.jpg" alt="Los Angeles" >
+      </div>
+      
+      <div class="item active">
+        <img src="img5.jpg" alt="Los Angeles" >
       </div>
     </div>
 

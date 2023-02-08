@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Ambica Photography </title>
+<title>WedLive | Event Live Streaming</title>
 <link rel="stylesheet"
  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -15,6 +15,15 @@
    
    <style>
    
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 2;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 2;
+  }
+}
+
    .center {
   margin: auto;
   width: 95%;
@@ -25,9 +34,9 @@
 
 .main {
   margin: auto;
-  width: 75%;
+  width: 55%;
   height : auto;
-  border: 1px solid rgba(255, 0, 0, .2) ;
+  border: 1px solid rgb(222, 221, 218);
   padding: 30px;
 }
 
@@ -38,6 +47,12 @@
     float:left;
 }
 
+.ifr
+{
+width:70%;
+height:560px ;
+}
+
    </style>
    
    <script>
@@ -45,7 +60,7 @@
    {
      
      console.log('got request for id'+id);
-     window.location='watchWedding?id='+id;     
+     window.location='live/'+id.replace(/\s+/g,'');;     
    }
    </script>
    
@@ -77,30 +92,59 @@
 </div>
 
 <center>
-Event photos clicked by Ambica Photography
+ <br/>
+<h4> Photography is the art of making memories tangible </h4> <br/>
 <div>
-  <embed type="text/html" src="slide.html" width="100%" height="600px"> 
+    <iframe class="ifr"
+  src="https://www.youtube.com/embed/gH_RYRwVrVM"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen></iframe>
 </div>
 
 </br>
 <div class="main">
 
-<div class="card text-center" th:each="item : ${wed_list}" style="cursor: pointer;" >
-  <div class="card-header">
-  </div>
-  <div class="card-body" th:id=${item.weddingId} onclick="openWed(this.id)">
-    
-    <img class="img" th:src="'data:image/png;base64,' + ${item.wedPic}" />
-  <h2 class="card-title" style="color:goldenrod;" th:text="${item.firstName + ' weds ' + item.secondName } " > </h2>
-   </br> </br> </br>
-    <h4 class="card-text" th:text=" 'Wedding Venue: '+${item.eventVenue}" > </h4> 
-    </br> </br>
-    <h4 class="card-text" th:text=" 'Wedding Date: '+${item.eventDate}" > </h4>
-  </div>
-  <div class="card-footer text-muted">  <span style th:text="${item.eventDate}"> </span>  </div>
-  <div>
-        &nbsp;
+<div class="card-columns">
+
+  <div class="card">
+    <img class="card-img-top" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2019/11/combination-of-colours-2.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Bindu weds Venkat</h5>
+      <p class="card-text">Venue : SS Convenstion, NSP</p>
     </div>
+  </div>
+ 
+ <div class="card">
+    <img class="card-img-top" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2019/11/combination-of-colours-2.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title that wraps to a new line</h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+  </div>
+ <div class="card">
+    <img class="card-img-top" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2019/11/combination-of-colours-2.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title that wraps to a new line</h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+  </div>
+ 
+ <div class="card">
+    <img class="card-img-top" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2019/11/combination-of-colours-2.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title that wraps to a new line</h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+  </div>
+<div class="card">
+    <img class="card-img-top" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2019/11/combination-of-colours-2.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title that wraps to a new line</h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+  </div>
+
 </div>
     
 

@@ -19,7 +19,10 @@ public interface WeddingRepo extends JpaRepository<WeddingDetails,Long> {
 	@Query(value="select t.* from wedding_details t where wedding_id=?1  " , nativeQuery = true)
 	public WeddingDetails getWeddingDetails(long id);
 	
-	@Query(value="select t.* from wedding_details t where f_name like ?1% or l_name like ?1% or wedding_id=?1 " , nativeQuery = true)
+	@Query(value="select t.* from wedding_details t where upper(replace(f_name,' ','')||replace(l_name,' ',''))=upper(?1) order by wedding_id desc limit 1" , nativeQuery = true)
+	public WeddingDetails getWeddingDetailsName(String name);
+	
+	@Query(value="select t.* from wedding_details t where upper(f_name) like '%'||?1||'%' or upper(l_name) like '%'||?1||'%' or wedding_id=?1 " , nativeQuery = true)
 	public List<WeddingDetails> getDetailsByName(String name);
 	
 	@Modifying

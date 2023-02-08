@@ -137,7 +137,7 @@ color: red;
 	  <td th:text="${item.teaserLink}"></td>
 	  <td th:text="${item.wedLink}"></td>
 	  <td th:text="${item.recpLink}"></td>
-	   <td ><button th:id="${item.weddingId}" class="btn btn-info" onclick="location.href = 'watchWedding?id='+this.id ; return false;"> View page</button> </td> 
+	   <td ><button th:id=${item.firstName+item.secondName}  class="btn btn-info" onclick="location.href = 'live/'+this.id ; return false;"> View page</button> </td> 
     </tr>
   </tbody>
 </table>

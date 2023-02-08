@@ -65,13 +65,18 @@ CommonUtil util;
 		return "Login";
 	}
 	
-	@GetMapping("/watchWedding")
-	String getFullWedding(@RequestParam long id,Model model)
+	@GetMapping("/live/{name}")
+	String getFullWedding(@PathVariable String name,Model model)
 	{
-		WeddingDetails wd=repo.getWeddingDetails(id);
-		
+		WeddingDetails wd=repo.getWeddingDetailsName(name);
+		System.out.println("fetching live wedding of "+name);
+		if(wd==null )
+		{
+			System.out.println("Found no data with "+name);
+			return "error";
+		}
 		model.addAttribute("item", wd);
-		
+		model.addAttribute("wedMsg", wd.getFirstName()+"\n weds \n"+wd.getSecondName() )	;	
 		System.out.println(wd);
 		return "fullWedding";
 	}
@@ -141,6 +146,8 @@ CommonUtil util;
 	String createEvent(HttpServletRequest req,Model model) throws IOException, ServletException 
 	{
 		
+		try
+		{
 		WeddingDetails newWedding=util.generateWedding(req);
 		System.out.println(newWedding);
 		repo.save(newWedding);
@@ -148,7 +155,14 @@ CommonUtil util;
 		model.addAttribute("title", "Details Added");
 		model.addAttribute("data", "Added "+newWedding.firstName+ " weds "+newWedding.secondName+
 		" details to DB.");
-		return "info";		
+		return "info";	
+		}
+		catch(Exception e)
+		{
+			System.out.println("error : "+e.getMessage());
+			model.addAttribute("error", e.getMessage());
+			return "adminError";
+		}
 	}
 	
 	@GetMapping("/modifyEvent")
@@ -176,6 +190,8 @@ CommonUtil util;
 		WeddingDetails reqObj=util.generateWedding(req);
 		WeddingDetails dbObj= repo.getWeddingDetails(Long.parseLong( req.getParameter("wid")));
 		reqObj.weddingId=dbObj.weddingId;
+		reqObj.ctime =dbObj.ctime;
+		reqObj.mtime =new Date();
 		
 		if(reqObj.invitePic==null)
 		{
@@ -197,8 +213,9 @@ CommonUtil util;
 	@GetMapping("/search")
 	String searchWedding(@RequestParam String value,Model model)
 	{
-		System.out.println("searching with "+value);
+		
 		List<WeddingDetails> lst=repo.getDetailsByName(value);
+		System.out.println("searching with "+value + "found "+lst.size()+" results");
 		model.addAttribute("wed_list", lst);
 		return "searchResults";
 	}

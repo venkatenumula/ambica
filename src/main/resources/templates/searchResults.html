@@ -86,6 +86,10 @@ color: red;
       </li>      
     </ul>
     
+    <form class="form-inline" action="search?value=" onsubmit="location.href = this.action + this.searchid.value; return false;" >
+    <input class="form-control mr-sm-2" type="search" id="searchid" placeholder="Search with name or ID" aria-label="Search">
+    <button class="btn btn btn-dark my-2 my-sm-0" type="submit">Search</button>
+  </form> 
     &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp 
     
     <a class = "material-icons" style="color:red" href="logout" alt="Logout" > logout  

@@ -44,16 +44,21 @@ WeddingRepo repo;
 UserRepo lrepo;
 
 @Autowired
+WatchRepo wrepo;
+
+@Autowired
 CommonUtil util;
 	
 	@RequestMapping(value="/",method = RequestMethod.GET )
 	public String homePage(Model model)
 	{
 		System.out.println("GET Request in root path..");
-		List<WeddingDetails > wed=repo.getLatestDetails(5);
-		System.out.println("size "+ wed.size());
-		wed.forEach(a->System.out.println(a));
-		model.addAttribute("wed_list", wed);
+		List<WeddingDetails > wedL=repo.getLatestDetails(5);
+		System.out.println("size "+ wedL.size());
+		
+		wedL.forEach(w -> w.count=wrepo.getWatchCount(w.getWeddingId())) ;
+		wedL.forEach(a->System.out.println(a));
+		model.addAttribute("wed_list", wedL);
 		
 		return "home";
 	}
@@ -66,7 +71,7 @@ CommonUtil util;
 	}
 	
 	@GetMapping("/live/{name}")
-	String getFullWedding(@PathVariable String name,Model model)
+	String getFullWedding(@PathVariable String name,Model model,HttpServletRequest req)
 	{
 		WeddingDetails wd=repo.getWeddingDetailsName(name);
 		System.out.println("fetching live wedding of "+name);
@@ -78,6 +83,9 @@ CommonUtil util;
 		model.addAttribute("item", wd);
 		model.addAttribute("wedMsg", wd.getFirstName()+"\n weds \n"+wd.getSecondName() )	;	
 		System.out.println(wd);
+		
+		WatchDetails wad=new WatchDetails(wd.weddingId, req.getRemoteAddr() ,new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(new Date()) ) ;
+		wrepo.save(wad);
 		return "fullWedding";
 	}
 	
@@ -121,8 +129,10 @@ CommonUtil util;
 		/*
 		 * if(req.getSession().getAttribute("sessionId")==null) { return "error"; }
 		 */
+		List<WeddingDetails> wl=repo.getLatestDetails(10);
 		
-		model.addAttribute("wed_list",repo.getLatestDetails(10));
+		wl.forEach(w -> w.count=wrepo.getWatchCount(w.getWeddingId())) ;
+		model.addAttribute("wed_list",wl);
 		return "AdminHome";
 		
 	}
@@ -153,8 +163,7 @@ CommonUtil util;
 		repo.save(newWedding);
 		
 		model.addAttribute("title", "Details Added");
-		model.addAttribute("data", "Added "+newWedding.firstName+ " weds "+newWedding.secondName+
-		" details to DB.");
+		model.addAttribute("data", "Added "+newWedding.title+" details to DB.");
 		return "info";	
 		}
 		catch(Exception e)

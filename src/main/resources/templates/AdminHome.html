@@ -123,6 +123,7 @@ color: red;
 	  <th scope="col">Teaser Video Code</th>
 	  <th scope="col">Wedding Video Code</th>
 	  <th scope="col">Reception Video Code</th>
+	  <th scope="col">Viwes Count</th>
 	  <th scope="col">Action</th>
     </tr>
   </thead>
@@ -137,6 +138,7 @@ color: red;
 	  <td th:text="${item.teaserLink}"></td>
 	  <td th:text="${item.wedLink}"></td>
 	  <td th:text="${item.recpLink}"></td>
+	  <td th:text="${item.count}"></td>
 	   <td ><button th:id=${item.firstName+item.secondName}  class="btn btn-info" onclick="location.href = 'live/'+this.id ; return false;"> View page</button> </td> 
     </tr>
   </tbody>

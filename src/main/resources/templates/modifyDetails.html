@@ -174,10 +174,19 @@ function wait(time) {
     <div class="col">
       <div class="form-outline"> 
       <label class="form-label" for="sname">Second name</label>
-        <input type="text" id="sname" name="sname" class="form-control" th:value="${wed.secondName}"  required />
+        <input type="text" id="sname" name="sname" class="form-control" th:value="${wed.secondName}"  />
         
       </div>
     </div>
+    
+    <div class="col">
+      <div class="form-outline"> 
+      <label class="form-label" for="sname">Event Title</label>
+        <input type="text" id="title" name="title" class="form-control" th:value="${wed.title}" required />
+        
+      </div>
+    </div>
+    
   </div>
   
   <div class="row mb-4">

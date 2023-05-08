@@ -34,14 +34,14 @@
 
 .main {
   margin: auto;
-  width: 55%;
+  width: 95%;
   height : auto;
   border: 1px solid rgb(222, 221, 218);
   padding: 30px;
 }
 
 .img {
-    width: 280px;
+    
     height: 360px; 
     object-fit: contain;
     float:left;
@@ -49,8 +49,9 @@
 
 .ifr
 {
-width:70%;
-height:560px ;
+width:90%;
+/* height:460px ; */
+ aspect-ratio: 16/9;
 }
 
    </style>
@@ -96,58 +97,36 @@ height:560px ;
 <h4> Photography is the art of making memories tangible </h4> <br/>
 <div>
     <iframe class="ifr"
-  src="https://www.youtube.com/embed/gH_RYRwVrVM"
+  src="https://www.youtube.com/embed/0-NXWezoPIg"
   frameborder="0"
   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
   allowfullscreen></iframe>
 </div>
 
 </br>
+</br>
+<h4> Our latest live streamings </h4> <br/> </br>
 <div class="main">
-
-<div class="card-columns">
-
-  <div class="card">
-    <img class="card-img-top" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2019/11/combination-of-colours-2.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Bindu weds Venkat</h5>
-      <p class="card-text">Venue : SS Convenstion, NSP</p>
-    </div>
-  </div>
  
- <div class="card">
-    <img class="card-img-top" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2019/11/combination-of-colours-2.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title that wraps to a new line</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-  </div>
- <div class="card">
-    <img class="card-img-top" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2019/11/combination-of-colours-2.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title that wraps to a new line</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-  </div>
- 
- <div class="card">
-    <img class="card-img-top" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2019/11/combination-of-colours-2.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title that wraps to a new line</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-  </div>
-<div class="card">
-    <img class="card-img-top" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2019/11/combination-of-colours-2.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title that wraps to a new line</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-  </div>
+ <div class="card-columns" >
 
-</div>
+  <div class="card"  th:each="item : ${wed_list}" style="cursor: pointer; " th:id=${item.firstName+item.secondName} onclick="openWed(this.id)">
+    <div th:if="${item.wedPic != null and item.wedPic  != '' }">
+    <img class="card-img-top img" th:src="'data:image/png;base64,' + ${item.wedPic}" alt="Card image cap"/>
+    </div>
     
-
+    <div th:if="${item.wedPic == null or item.wedPic  == '' }">
+    <img class="card-img-top img" src="https://www.shaadidukaan.com/vogue/wp-content/uploads/2019/11/combination-of-colours-2.jpg" alt="Card image cap">
+    </div>
+    
+    <div class="card-body">
+      <h3 class="card-title" style="color:goldenrod;" th:text="${item.title } " > </h3>
+      
+      <h5 class="card-text" th:text=" 'Venue: '+${item.eventVenue}" > </h5> 
+	  <h5 class="card-text" th:text=" 'Event Date: '+${item.eventDate}" > </h5> 
+    </div>
+  </div>
+</div>
 </div> 
 </br> </br> </br>
 <div> 

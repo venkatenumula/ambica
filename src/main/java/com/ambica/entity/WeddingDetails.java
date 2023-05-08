@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.Transient;
 
 @Entity(name="wedding_details")
 public class WeddingDetails {
@@ -24,6 +25,12 @@ public class WeddingDetails {
 	
 	@Column(name="l_name")
 	public String secondName;
+	
+	@Column(name="title")
+	public String title;
+	
+	@Column(name="event_type")
+	public String type;
 	
 	@Column(name="event_date")
 	public String eventDate;
@@ -54,6 +61,9 @@ public class WeddingDetails {
 	
 	@Column(name="mtime")
 	public Date mtime; 
+	
+	@Transient
+	public long count;
 
 	public Long getWeddingId() {
 		return weddingId;
@@ -157,8 +167,8 @@ public class WeddingDetails {
 	public String toString() {
 		
 		return "WeddingDetails [weddingId=" + weddingId + ", firstName=" + firstName + ", secondName=" + secondName
-				+ ", eventDate=" + eventDate  + ", eventVenue=" + eventVenue + ", teaserLink=" + teaserLink + ", wedLink="
-				+ wedLink + ", recDate=" + recDate + ", recpLink=" + recpLink +"]";
+				+ ", title "+title+ ", type "+type+ ", eventDate=" + eventDate  + ", eventVenue=" + eventVenue + ", teaserLink=" + teaserLink + ", wedLink="
+				+ wedLink + ", recDate=" + recDate + ", recpLink=" + recpLink + ",count ="+count+"]";
 	}	
 	
 }

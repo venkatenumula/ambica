@@ -20,9 +20,12 @@ public class CommonUtil {
 	
 	public WeddingDetails generateWedding(HttpServletRequest req) throws IOException, ServletException
 	{		
-		WeddingDetails newWedding=new WeddingDetails();		
+		WeddingDetails newWedding=new WeddingDetails();	
+		
 		newWedding.firstName=req.getParameter("fname").replaceAll(" ", "") ;
 		newWedding.secondName=req.getParameter("sname") .replaceAll(" ", "");
+		newWedding.title=req.getParameter("title") ;
+		newWedding.type=req.getParameter("type") ;
 		newWedding.eventDate=req.getParameter("eventdate") ;
 		newWedding.eventVenue=req.getParameter("venue") ;
 		newWedding.recDate=req.getParameter("recdate") ;
@@ -34,6 +37,7 @@ public class CommonUtil {
 		String date=sdf.format(new Date());
 		newWedding.ctime=new Date();
 		newWedding.mtime=new Date();
+		System.out.println("new wedd:"+newWedding);
 		InputStream pic=null;
 		byte[] sourceBytes ;
 		
